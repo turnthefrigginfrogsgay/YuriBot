@@ -22,9 +22,9 @@ def send_post():
 
         with open(temp_file_path, "rb") as file:
             if image_source != False:
-                text = client_utils.TextBuilder().text(f"WAITER! WAITER! MORE GIRLS KISSING, PLEASE\n").link('source', image_source).text(" (").link('safebooru', full_link).text(")\n").tag("#yuri","yuri").text(" ").tag("#百合","百合").text(" ").tag("#wlw","wlw").text(" ").tag("#lesbian","lesbian").text("\nI am a bot! If I am misbehaving, contact my maintainer (check bio)\n\nHelp keep yuri bot up! ").link("Buy me a Strawberry!","https://buymeacoffee.com/rosedabun")
+                text = client_utils.TextBuilder().text(f"WAITER! WAITER! MORE GIRLS KISSING, PLEASE\n").link('source', image_source).text(" (").link('safebooru', full_link).text(")\n").tag("#yuri","yuri").text(" ").tag("#百合","百合").text(" ").tag("#wlw","wlw").text(" ").tag("#lesbian","lesbian").text("\n").link("I am a bot! Check out my source code!", "https://github.com/turnthefrigginfrogsgay/YuriBot").text("\n\nHelp keep yuri bot up! ").link("Buy me a Strawberry!","https://buymeacoffee.com/rosedabun")
             else:
-                text = client_utils.TextBuilder().text(f"WAITER! WAITER! MORE GIRLS KISSING, PLEASE\n Could not find original source (").link('safebooru', full_link).text(")\n").tag("#yuri","yuri").text(" ").tag("#百合","百合").text(" ").tag("#wlw","wlw").text(" ").tag("#lesbian","lesbian").text("\nI am a bot! If I am misbehaving, contact my maintainer (check bio)\n\nHelp keep yuri bot up! ").link("Buy me a Strawberry!","https://buymeacoffee.com/rosedabun")
+                text = client_utils.TextBuilder().text(f"WAITER! WAITER! MORE GIRLS KISSING, PLEASE\n Could not find original source (").link('safebooru', full_link).text(")\n").tag("#yuri","yuri").text(" ").tag("#百合","百合").text(" ").tag("#wlw","wlw").text(" ").tag("#lesbian","lesbian").text("\n").link("I am a bot! Check out my source code!", "https://github.com/turnthefrigginfrogsgay/YuriBot").text("\n\nHelp keep yuri bot up! ").link("Buy me a Strawberry!","https://buymeacoffee.com/rosedabun")
             post = client.send_image(text, file, "girls kissing :3")
 
         os.remove(temp_file_path)

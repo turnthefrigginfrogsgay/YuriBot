@@ -17,7 +17,6 @@ def find_yuri_image():
         if image_match and link_match:
             print("Yuri image found!")
             image_url = re.sub(r'\.jpg .*', '.jpg', image_match.group(1).replace("180x180", "original"))
-            full_link = re.sub(r'\?q\=.*', '', base_url + link_match.group(1))
             
             image_response = requests.head(image_url)
             print(f"Full link: {full_link}")
