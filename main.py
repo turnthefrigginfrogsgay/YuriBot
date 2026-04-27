@@ -1,7 +1,6 @@
 from atproto import Client, client_utils
 from grabYuri import find_yuri_image
-from grabSource import find_yuri_source
-from secrets import uname, password
+from secrets import uname, password, useragent
 import requests
 import tempfile
 import os
@@ -11,12 +10,12 @@ client = Client()
 client.login(uname, password)
 
 def send_post():
+    headers = {'User-Agent': useragent}
     try:
-        image_url, full_link = find_yuri_image()
-        image_source = find_yuri_source(full_link)
+        image_url, full_link, post_tags, image_source = find_yuri_image()
 
         with tempfile.NamedTemporaryFile(suffix=".jpg", delete=False) as temp_file:
-            image_data = requests.get(image_url).content
+            image_data = requests.get(image_url, headers=headers).content
             temp_file.write(image_data)
             temp_file_path = temp_file.name
 
@@ -25,7 +24,7 @@ def send_post():
                 text = client_utils.TextBuilder().text(f"WAITER! WAITER! MORE GIRLS KISSING, PLEASE\n").link('source', image_source).text(" (").link('safebooru', full_link).text(")\n").tag("#yuri","yuri").text(" ").tag("#百合","百合").text(" ").tag("#wlw","wlw").text(" ").tag("#lesbian","lesbian").text("\n").link("I am a bot! Check out my source code!", "https://github.com/turnthefrigginfrogsgay/YuriBot").text("\n\nHelp keep yuri bot up! ").link("Buy me a Strawberry!","https://buymeacoffee.com/rosedabun")
             else:
                 text = client_utils.TextBuilder().text(f"WAITER! WAITER! MORE GIRLS KISSING, PLEASE\n Could not find original source (").link('safebooru', full_link).text(")\n").tag("#yuri","yuri").text(" ").tag("#百合","百合").text(" ").tag("#wlw","wlw").text(" ").tag("#lesbian","lesbian").text("\n").link("I am a bot! Check out my source code!", "https://github.com/turnthefrigginfrogsgay/YuriBot").text("\n\nHelp keep yuri bot up! ").link("Buy me a Strawberry!","https://buymeacoffee.com/rosedabun")
-            post = client.send_image(text, file, "girls kissing :3")
+            post = client.send_image(text, file, f"Danbooru Tags: {post_tags}")
 
         os.remove(temp_file_path)
     except Exception as e:
