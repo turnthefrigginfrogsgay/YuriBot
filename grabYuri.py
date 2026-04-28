@@ -1,6 +1,7 @@
 import requests
 import json
 from secrets import useragent
+import time
 
 
 def find_yuri_image():
@@ -11,6 +12,7 @@ def find_yuri_image():
         response = requests.get(f"{base_url}/posts.json?tags=order%3Arandom+yuri&limit=1", headers=headers)
         if response.status_code != 200:
             print(f"Failed to fetch yuri image: {response.status_code}")
+            time.sleep(10)
             continue
         responseJson = json.loads(response.content)
         selectedYuri = responseJson[0]
