@@ -1,8 +1,8 @@
 # YuriBot
 A simple bot that crawls safebooru and posts yuri to Bluesky!
-Created stupidly by [@turnthefrigginfrogs.gay](https://bsky.app/profile/turnthefrigginfrogs.gay)
+Created stupidly by [@girlskissers.gay](https://bsky.app/profile/girlskissers.gay)
 
-Help support @turnthefrigginfrogs.gay! Buy me a Strawberry: https://buymeacoffee.com/rosedabun
+Help support @girlskissers.gay! Buy me a Strawberry: https://buymeacoffee.com/rosedabun
 
 # Setting this up yourself!
 1. Clone this repository! `git clone https://github.com/turnthefrigginfrogsgay/YuriBot.git`
