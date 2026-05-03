@@ -26,7 +26,7 @@ def find_yuri_image():
         if image_url and post_id and post_tags and image_source:
             print("Yuri image found!")
             
-            full_link = f"{base_url}/post/{post_id}"
+            full_link = f"{base_url}/posts/{post_id}"
             image_response = requests.head(image_url, headers=headers)
             print(f"Full link: {full_link}")
             print(f"Image URL: {image_url}")
